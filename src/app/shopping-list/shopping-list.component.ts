@@ -16,7 +16,11 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.shoppingListSv.getIngredients();
   }
 
-  onIngredientAdd(e: any){
+  onIngredientAdd(e: any) {
     this.ingredients.push(e);
+  }
+
+  onEditItem(index: any) {
+    this.shoppingListSv.startedEditing.emit(index);
   }
 }
