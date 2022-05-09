@@ -20,16 +20,26 @@ export class RecipeService {
   ]
 
   recipeSelected = new EventEmitter<Recipe>();
+  recipeEdited = new EventEmitter<number>();
 
   getRecipes(index: number) {
     return this.recipes[index];//Returncopyarrayinsteadofrealarray}}
   }
-  
+
   getRecipe() {
-    return this.recipes.slice();//Returncopyarrayinsteadofrealarray}}
+    return this.recipes;//Returncopyarrayinsteadofrealarray}}
   }
   constructor(private slService: ShoppingListService) { }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
+  }
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe)
+  }
+  updateRecipe(index: number, recipe: Recipe) {
+    this.recipes[index] = recipe;
+  }
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
   }
 }
